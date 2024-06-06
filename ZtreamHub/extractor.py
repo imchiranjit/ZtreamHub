@@ -1,4 +1,4 @@
-import re, requests, json5
+import re, requests, json5, html
 
 class ZtreamHub():
   
@@ -29,6 +29,7 @@ class ZtreamHub():
   
   def __get_title__(self, html_doc):
     title = re.findall(self.PATTERN_TITLE, html_doc)[0]
+    title = html.unescape(title)
     return title.strip()
 
   def __get_raw_data__(self, html_doc):
